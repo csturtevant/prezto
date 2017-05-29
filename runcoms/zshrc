@@ -10,4 +10,143 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Customize to your needs...
+# Customize to your needs    ---------------------------------
+# ------------------------------------------------------------
+
+# Compilation flags
+export ARCHFLAGS="-arch x86_64"
+
+# # Ensure user-installed binaries take precedence
+export PATH=~/.bin:$PATH
+
+# # Ensure that scripts folder in git repo is added to the path.
+export PATH=/Users/csturtevant/Documents/notes/Sync/Scripts:$PATH
+# # Load Maven and JAVA home
+export PATH=$PATH:$MAVEN_HOME/bin:$JAVA_HOME/bin
+# # Load Jersey / JAX-RS
+export PATH=/Users/csturtevant/Documents/Programs/jaxrs-ri:$PATH
+# # Load Apache Tomcat
+export PATH=/Users/csturtevant/Documents/Programs/apache-tomcat-8.0.32:$PATH
+# # Load .bashrc if it exists
+# # test -f ~/.bashrc && source ~/.bashrc
+# # Designate Editor
+# # export EDITOR="/Applications/Emacs.app/Contents/MacOS/Emacs"
+# export ALTERNATE_EDITOR=""
+export EDITOR=emacsclient
+
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+export PATH="$PATH:$JAVA_HOME/bin"
+
+# # # Default Maven Opts
+# export MAVEN_OPTS="-Xmx1g -Xms1g -XX:MaxPermSize=1g"
+
+# # Maven Opts for large repository
+ export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=1024m -Duser.language=en -Duser.country=us -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=4001,server=y,suspend=n"
+# # export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=1024m -Duser.language=en -Duser.country=us -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=4001,server=y,suspend=y"
+
+# # export MAVEN_OPTS='-Xmx1g -XX:MaxPermSize=1024 -Duser.language=en -Duser.country=us -Xnoagent -Djava.compiler=NONE'
+# set vim as the default git editor // used with git config --global core.editor "vim"
+export GIT_EDITOR=vim
+# # List of sources
+# source ~/.bin/git-prompt.sh
+# # source ~/.bin/gpush.sh
+
+# # zstyle ':completion:*:*:git:*' script ~/.zsh/.git-completion.zsh
+# # fpath=(~/.zsh $fpath)
+
+# # List of aliases
+alias vim="mvim"
+alias fn="find . -print | ag "
+alias -g pa=" | ag " # pipe to ag (pa)
+# alias ls="ls -G"
+alias mc="mvn clean install"
+alias mcnt="mvn clean install -DskipTests"
+alias mt="mvn test"
+alias copypath='pwd|pbcopy'
+# alias gp="git pull"
+# alias gc="git checkout"
+alias ga="git add"
+alias gh="cd ~/gitHub"
+# alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
+alias -g ...='../..'
+alias -g ....='../../..'
+alias -g .....='../../../..'
+
+
+# Spacemacs
+alias sm="/usr/local/Cellar/emacs-mac/emacs-25.2-z-mac-6.3/bin/emacsclient -nc "
+alias smg="open -a /usr/local/Cellar/emacs-mac/emacs-25.2-z-mac-6.3/Emacs.app "
+alias smdmn="emacs --daemon"
+alias killsmdmn="emacsclient -e '(client-save-kill-emacs)'"
+
+# Fasd
+alias fsm="f -e emacsclient "
+
+# # Configurations
+# # Fzf - Fuzzy File Finder
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# # # Pyenv
+# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+# if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+# # # # Functions
+# # # # For git branch use # fzf
+fbr() {
+  local branches branch
+  branches=$(git branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+nvm use 0.12.7
+# # # # # Run naven wuth the given options
+# # mvnd () {
+# #         export MAVEN_OPTS='-Xmx1g -Duser.language=en -Duser.country=us -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=4000,server=y,suspend=n'
+# #         mvn "$@";
+# #         export MAVEN_OPTS='-Xmx1g -Duser.language=en -Duser.country=us -Xnoagent -Djava.compiler=NONE'
+# # }
+
+# # The next line updates PATH for the Google Cloud SDK.
+# # if [ -f /Users/csturtevant/Downloads/google-cloud-sdk/path.bash.inc ]; then
+# #   source '/Users/csturtevant/Downloads/google-cloud-sdk/path.bash.inc'
+# # fi
+
+# # # The next line enables shell command completion for gcloud.
+# # if [ -f /Users/csturtevant/Downloads/google-cloud-sdk/completion.bash.inc ]; then
+# #   source '/Users/csturtevant/Downloads/google-cloud-sdk/completion.bash.inc'
+# # fi
+
+[ -f /Users/csturtevant/.lc2/bin/.lc2-init.sh ] && source /Users/csturtevant/.lc2/bin/.lc2-init.sh
+
+# test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+# # # # Functions
+function vi {
+    running=$(ps aux | ag emacs | ag -v ag)
+    if [ -z "$running" ]
+    then
+        open -a "Emacs"
+        echo "not running"
+        /bin/sleep 8
+    fi
+
+    if [[ ! -t 0 ]]
+    then
+        echo "pipe"
+        TMP="$(mktemp /tmp/stdin-XXX)"
+        cat >>$TMP
+        # emacsclient -a emacs $TMP
+        emacsclient -a emacs -nc $TMP
+        rm -f $TMP
+    elif [[ -z "$1" ]]
+    then
+        echo "no pipe no args"
+        emacsclient -nc "."
+    else
+        echo "no pipe with args"
+        emacsclient -nc "$@"
+    fi
+
+}

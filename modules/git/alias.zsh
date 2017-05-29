@@ -50,7 +50,6 @@ if ! zstyle -t ':prezto:module:git:alias' skip 'yes'; then
   alias gbX='git branch --delete --force'
 
   # Commit (c)
-  alias gc='git commit --verbose'
   alias gca='git commit --verbose --all'
   alias gcm='git commit --message'
   alias gcam='git commit --all --message'
@@ -64,6 +63,9 @@ if ! zstyle -t ':prezto:module:git:alias' skip 'yes'; then
   alias gcR='git reset "HEAD^"'
   alias gcs='git show'
   alias gcl='git-commit-lost'
+
+  # Checkout 
+  alias gc='git checkout '
 
   # Conflict (C)
   alias gCl='git --no-pager diff --name-only --diff-filter=U'
@@ -191,7 +193,7 @@ if ! zstyle -t ':prezto:module:git:alias' skip 'yes'; then
   alias gmt='git mergetool'
 
   # Push (p)
-  alias gp='git push'
+  alias gp='git pull'
   alias gpf='git push --force-with-lease'
   alias gpF='git push --force'
   alias gpa='git push --all'
@@ -219,7 +221,7 @@ if ! zstyle -t ':prezto:module:git:alias' skip 'yes'; then
   alias gRb='git-hub-browse'
 
   # Stash (s)
-  alias gs='git stash'
+  alias gs='git status' # status
   alias gsa='git stash apply'
   alias gsx='git stash drop'
   alias gsX='git-stash-clear-interactive'

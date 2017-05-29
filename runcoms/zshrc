@@ -1,14 +1,18 @@
 #
 # Executes commands at the start of an interactive session.
 #
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
 
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
+
+# Source local variables
+if [[ -f $HOME/.profile ]]
+then
+    source $HOME/.profile
+fi
+
 
 # Customize to your needs    ---------------------------------
 # ------------------------------------------------------------
@@ -32,10 +36,10 @@ export PATH=/Users/csturtevant/Documents/Programs/apache-tomcat-8.0.32:$PATH
 # # Designate Editor
 # # export EDITOR="/Applications/Emacs.app/Contents/MacOS/Emacs"
 # export ALTERNATE_EDITOR=""
-export EDITOR=emacsclient
+# export EDITOR=emacsclient
 
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-export PATH="$PATH:$JAVA_HOME/bin"
+# export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+# export PATH="$PATH:$JAVA_HOME/bin"
 
 # # # Default Maven Opts
 # export MAVEN_OPTS="-Xmx1g -Xms1g -XX:MaxPermSize=1g"
@@ -46,7 +50,7 @@ export PATH="$PATH:$JAVA_HOME/bin"
 
 # # export MAVEN_OPTS='-Xmx1g -XX:MaxPermSize=1024 -Duser.language=en -Duser.country=us -Xnoagent -Djava.compiler=NONE'
 # set vim as the default git editor // used with git config --global core.editor "vim"
-export GIT_EDITOR=vim
+# export GIT_EDITOR=vim
 # # List of sources
 # source ~/.bin/git-prompt.sh
 # # source ~/.bin/gpush.sh
@@ -71,7 +75,6 @@ alias gh="cd ~/gitHub"
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
-
 
 # Spacemacs
 alias sm="/usr/local/Cellar/emacs-mac/emacs-25.2-z-mac-6.3/bin/emacsclient -nc "

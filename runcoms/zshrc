@@ -8,7 +8,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Source local variables
-if [[ -f $HOME/.profile ]]
+if [[ -a $HOME/.profile ]]
 then
     source $HOME/.profile
 fi
@@ -16,6 +16,30 @@ fi
 
 # Customize to your needs    ---------------------------------
 # ------------------------------------------------------------
+# this is an addendum that adds things from dotfiles
+# use the csturtevant/dotfiles project from github
+export ZSH=$HOME/.dotfiles
+
+# your project folder that we can `c [tab]` to
+export PROJECTS=~/Code
+
+# all of our zsh files
+typeset -U config_files
+config_files=($ZSH/**/*.zsh)
+
+# load the path files
+for file in ${(M)config_files:#*/path.zsh}
+do
+  source $file
+done
+
+# load everything but the path and completion files
+for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
+do
+  source $file
+done
+
+unset config_files
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
@@ -58,23 +82,26 @@ export PATH=/Users/csturtevant/Documents/Programs/apache-tomcat-8.0.32:$PATH
 # # zstyle ':completion:*:*:git:*' script ~/.zsh/.git-completion.zsh
 # # fpath=(~/.zsh $fpath)
 
-# # List of aliases
-alias vim="mvim"
-alias fn="find . -print | ag "
+# # List of global aliases
 alias -g pa=" | ag " # pipe to ag (pa)
-# alias ls="ls -G"
-alias mc="mvn clean install"
-alias mcnt="mvn clean install -DskipTests"
-alias mt="mvn test"
-alias copypath='pwd|pbcopy'
-# alias gp="git pull"
-# alias gc="git checkout"
-alias ga="git add"
-alias gh="cd ~/gitHub"
-# alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
+# # List of aliases
+alias ls="ls -G"
+alias l="ls -Gla"
+alias copypath='pwd|pbcopy'
+# alias gp="git pull"
+# alias gc="git checkout"
+alias fn="find . -print | ag "
+alias ga="git add"
+alias gh="cd ~/gitHub"
+alias mc="mvn clean install"
+alias mcnt="mvn clean install -DskipTests"
+alias mt="mvn test"
+alias pd="popd" # pop the directory off of the stack
+alias vim="mvim"
+# alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 # Spacemacs
 alias sm="/usr/local/Cellar/emacs-mac/emacs-25.2-z-mac-6.3/bin/emacsclient -nc "

@@ -7,6 +7,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+
 # Source local variables
 if [[ -a $HOME/.profile ]]
 then
@@ -20,6 +21,12 @@ fi
 # use the csturtevant/dotfiles project from github
 export ZSH=$HOME/.dotfiles
 
+# Source config variables
+if [[ -a $ZSH/zsh/config.zsh ]]
+then
+    source $ZSH/zsh/config.zsh
+fi
+
 # your project folder that we can `c [tab]` to
 export PROJECTS=~/Code
 
@@ -28,16 +35,18 @@ typeset -U config_files
 config_files=($ZSH/**/*.zsh)
 
 # load the path files
-for file in ${(M)config_files:#*/path.zsh}
+for file in ${(M)config_files:#*/*path.zsh}
 do
   source $file
 done
 
-# load everything but the path and completion files
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
-do
-  source $file
-done
+# # # I have commented out the below item as it seems unnecessary 
+# # # as these files are already accessible via path
+# # load everything but the path and completion files
+# for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
+# do
+#   source $file
+# done
 
 unset config_files
 
@@ -61,6 +70,7 @@ export PATH=/Users/csturtevant/Documents/Programs/apache-tomcat-8.0.32:$PATH
 # # export EDITOR="/Applications/Emacs.app/Contents/MacOS/Emacs"
 # export ALTERNATE_EDITOR=""
 export EDITOR=emacsclient
+
 
 # export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 # export PATH="$PATH:$JAVA_HOME/bin"
@@ -100,7 +110,6 @@ alias mc="mvn clean install"
 alias mcnt="mvn clean install -DskipTests"
 alias mt="mvn test"
 alias pd="popd" # pop the directory off of the stack
-alias vim="mvim"
 # alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 # Spacemacs
@@ -128,9 +137,9 @@ fbr() {
 }
 
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-nvm use 0.12.7
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+# nvm use 0.12.7
 # # # # # Run naven wuth the given options
 # # mvnd () {
 # #         export MAVEN_OPTS='-Xmx1g -Duser.language=en -Duser.country=us -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=4000,server=y,suspend=n'

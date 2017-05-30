@@ -254,7 +254,7 @@ if ! zstyle -t ':prezto:module:git:alias' skip 'yes'; then
   alias gwr='git reset --soft'
   alias gwR='git reset --hard'
   alias gwc='git clean -n'
-  alias gwC='git clean -f'
+  alias gwC='git clean -fd'
   alias gwx='git rm -r'
   alias gwX='git rm -rf'
 fi

@@ -57,7 +57,7 @@ export ARCHFLAGS="-arch x86_64"
 export PATH=~/.bin:$PATH
 
 # # Ensure that scripts folder in git repo is added to the path.
-export PATH=/Users/csturtevant/Documents/notes/Sync/Scripts:$PATH
+export PATH=/Users/csturtevant/Documents/notes/Sync/scripts:$PATH
 # # Load Maven and JAVA home
 export PATH=$PATH:$MAVEN_HOME/bin:$JAVA_HOME/bin
 # # Load Jersey / JAX-RS
@@ -106,6 +106,7 @@ alias copypath='pwd|pbcopy'
 alias fn="find . -print | ag "
 alias ga="git add"
 alias gh="cd ~/gitHub"
+alias gw="git-wtf"
 alias mc="mvn clean install"
 alias mcnt="mvn clean install -DskipTests"
 alias mt="mvn test"

@@ -24,5 +24,14 @@ now = datetime.datetime.now()
 
 home_directory_path = "/Users/chrissturtevant0/"
 
-sync_repo(home_directory_path, "notes")
-# sync_repo(home_directory_path, ".zprezto")
+def sync(to_sync):
+    if 'notes' in to_sync.lower():
+        sync_repo(home_directory_path, "notes")
+    elif 'toolbox' in to_sync.lower():
+        sync_repo(home_directory_path, ".zprezto")
+    else:
+        sync_repo(home_directory_path, "notes")
+        sync_repo(home_directory_path, ".zprezto")
+
+to_sync = input("Sync notes, toolbox or both? ")
+sync(to_sync)

@@ -1,0 +1,5 @@
+[user]
+        name = csturtevant
+        email = sturtevant.chris@gmail.com
+[credential]
+        helper = osxkeychain

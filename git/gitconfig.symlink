@@ -1,0 +1,33 @@
+# Local/private config goes in the include
+[alias]
+        co = checkout
+        count   = !git shortlog -sn
+	      sync = "!f() { echo Syncing $1 with master && git checkout master && git pull && git checkout $1 && git rebase master; }; f"
+        wtf     = !$ZSH/bin/git-wtf
+[apply]
+        whitespace = nowarn
+[color]
+        diff = auto
+        status = auto
+        branch = auto
+        ui = true
+[core]
+        excludesfile = ~/.gitignore
+        editor = vim
+[credential]
+	helper = osxkeychain
+[help]
+        autocorrect = 1
+[hub]
+        protocol = https
+[include]
+        path = ~/.gitconfig.local
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+        cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+        trustExitCode = true
+        keepBackup = false
+[push]
+        default = simple

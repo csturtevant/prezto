@@ -1,0 +1,11 @@
+" Set this for intuitive backspace
+set backspace=indent,eol,start
+" Set this for Syntax
+syntax on
+" Allow for easy clipboard use
+set clipboard=unnamed
+" Hybrid Numbers
+set relativenumber
+set number
+
+set undofile

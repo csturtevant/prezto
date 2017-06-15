@@ -1,0 +1,28 @@
+# This is a function for using a running emacs to open files
+function vi {
+    running=$(ps aux | ag emacs | ag -v ag)
+    if [ -z "$running" ]
+    then
+        open -a "Emacs"
+        echo "not running"
+        /bin/sleep 8
+    fi
+
+    if [[ ! -t 0 ]]
+    then
+        echo "pipe"
+        TMP="$(mktemp /tmp/stdin-XXX)"
+        cat >>$TMP
+        # emacsclient -a emacs $TMP
+        emacsclient -a emacs -nc $TMP
+        rm -f $TMP
+    elif [[ -z "$1" ]]
+    then
+        echo "no pipe no args"
+        emacsclient -nc "."
+    else
+        echo "no pipe with args"
+        emacsclient -nc "$@"
+    fi
+
+}

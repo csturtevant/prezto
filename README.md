@@ -1,3 +1,14 @@
+Toolbox - Dotfiles, Functions and ZSH Configurations, oh my!
+==============================
+This toolbox is where I store the configurations that keep my systems running
+the way I enjoy.
+
+This repository is forked from [Prezto](https://github.com/sorin-ionescu/prezto), a ZSH framework, with scripts and the method of file organization from [holman/dotfiles](https://github.com/holman/dotfiles).
+
+The instructions for how to run both parts of this repository are below. 
+
+Follow the Prezto steps first, and then run script/bootstrap
+
 Prezto — Instantly Awesome Zsh
 ==============================
 
@@ -17,7 +28,7 @@ version is 4.3.17.
 
   2. Clone the repository:
 
-        `git clone --recursive https://github.com/csturtevant/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"`
+        `git clone --recursive https://github.com/csturtevant/toolbox.git "${ZDOTDIR:-$HOME}/.zprezto"`
 
   3. Create a new Zsh configuration by copying the Zsh configuration files
      provided:
@@ -88,10 +99,62 @@ Resources
 
 The [Zsh Reference Card][7] and the [zsh-lovers][8] man page are indispensable.
 
-License
--------
 
-This project is licensed under the MIT License.
+# csturtevant does dotfiles
+
+Your dotfiles are how you personalize your system. These are mine.
+
+## topical
+
+Everything's built around topic areas. If you're adding a new area to your
+forked dotfiles — say, "Java" — you can simply add a `java` directory and put
+files in there. Anything with an extension of `.zsh` will get automatically
+included into your shell. Anything with an extension of `.symlink` will get
+symlinked without extension into `$HOME` when you run `script/bootstrap`.
+
+## components
+
+There's a few special files in the hierarchy.
+
+- **bin/**: Anything in `bin/` will get added to your `$PATH` and be made
+  available everywhere.
+- **Brewfile**: This is a list of applications for [Homebrew Cask](http://caskroom.io) to install: things like Chrome and 1Password and Adium and stuff. Might want to edit this file before running any initial setup.
+- **topic/\*.zsh**: Any files ending in `.zsh` get loaded into your
+  environment.
+- **topic/path.zsh**: Any file named `path.zsh` is loaded first and is
+  expected to setup `$PATH` or similar.
+- **topic/completion.zsh**: Any file named `completion.zsh` is loaded
+  last and is expected to setup autocomplete.
+- **topic/install.sh**: Any file named `install.sh` is executed when you run `script/install`. To avoid being loaded automatically, its extension is `.sh`, not `.zsh`.
+- **topic/\*.symlink**: Any file ending in `*.symlink` gets symlinked into
+  your `$HOME`. This is so you can keep all of those versioned in your dotfiles
+  but still keep those autoloaded files in your home directory. These get
+  symlinked in when you run `script/bootstrap`.
+
+## install
+
+Run this:
+
+```sh
+cd ~/.toolbox
+script/bootstrap
+```
+
+This will symlink the appropriate files in `.toolbox` to your home directory.
+Everything is configured and tweaked within `~/.toolbox`.
+
+The main file you'll want to change right off the bat is `zsh/zshrc.symlink`,
+which sets up a few paths that'll be different on your particular machine.
+
+`dot` is a simple script that installs some dependencies, sets sane macOS
+defaults, and so on. Tweak this script, and occasionally run `dot` from
+time to time to keep your environment fresh and up-to-date. You can find
+this script in `bin/`.
+
+## thanks
+
+Credit goes to [holman](http://github.com/holman)'s excellent
+[dotfiles](http://github.com/holman/dotfiles).
 
 [1]: http://www.zsh.org
 [2]: http://i.imgur.com/nrGV6pg.png "sorin theme"

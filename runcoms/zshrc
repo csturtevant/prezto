@@ -9,9 +9,19 @@ fi
 
 
 # Source local variables
-if [[ -a $HOME/.profile ]]
-then
-    source $HOME/.profile
+hostname=`hostname -s`
+if ! [ "${hostname#C02QR144FVH8}" = "${hostname}" ]; then
+  if [[ -a $HOME/.workprofile ]]
+  then
+      source $HOME/.workprofile
+  fi
+fi
+
+if ! [ "${hostname#Chriss-MacBook-Pro}" = "${hostname}" ]; then
+  if [[ -a $HOME/.homeprofile ]]
+  then
+      source $HOME/.homeprofile
+  fi
 fi
 
 
@@ -19,7 +29,7 @@ fi
 # ------------------------------------------------------------
 # this is an addendum that adds things from dotfiles
 # use the csturtevant/dotfiles project from github
-export ZSH=$HOME/.dotfiles
+export ZSH=$HOME/.zprezto
 
 # Source config variables
 if [[ -a $ZSH/zsh/config.zsh ]]
@@ -32,7 +42,7 @@ export PROJECTS=~/Code
 
 # all of our zsh files
 typeset -U config_files
-config_files=($ZSH/**/*.zsh)
+config_files=($ZSH/*/*.zsh) # changed from ($ZSH/**/*.zsh) to exclude modules
 
 # load the path files
 for file in ${(M)config_files:#*/*path.zsh}
@@ -53,17 +63,23 @@ unset config_files
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
+# Java Home 
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+# export PATH="$PATH:$JAVA_HOME/bin"
+
 # # Ensure user-installed binaries take precedence
 export PATH=~/.bin:$PATH
-
 # # Ensure that scripts folder in git repo is added to the path.
-export PATH=/Users/csturtevant/Documents/notes/Sync/scripts:$PATH
-# # Load Maven and JAVA home
-export PATH=$PATH:$MAVEN_HOME/bin:$JAVA_HOME/bin
+export PATH=~/notes/Sync/scripts:$PATH
 # # Load Jersey / JAX-RS
-export PATH=/Users/csturtevant/Documents/Programs/jaxrs-ri:$PATH
+export PATH=~/Documents/Programs/jaxrs-ri:$PATH
 # # Load Apache Tomcat
-export PATH=/Users/csturtevant/Documents/Programs/apache-tomcat-8.0.32:$PATH
+export PATH=~/Documents/Programs/apache-tomcat-8.0.32:$PATH
+# Make sure /usr/local/bin is a part of the path
+export PATH=/usr/local/bin:$PATH
+# Make sure yarn is a part of the path
+export PATH="$HOME/.yarn/bin:$PATH"
+
 # # Load .bashrc if it exists
 # # test -f ~/.bashrc && source ~/.bashrc
 # # Designate Editor
@@ -71,15 +87,14 @@ export PATH=/Users/csturtevant/Documents/Programs/apache-tomcat-8.0.32:$PATH
 # export ALTERNATE_EDITOR=""
 export EDITOR=emacsclient
 
-
 # export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 # export PATH="$PATH:$JAVA_HOME/bin"
 
 # # # Default Maven Opts
-# export MAVEN_OPTS="-Xmx1g -Xms1g -XX:MaxPermSize=1g"
+ export MAVEN_OPTS="-Xmx1g -Xms1g -XX:MaxPermSize=1g"
 
 # # Maven Opts for large repository
- export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=1024m -Duser.language=en -Duser.country=us -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=4001,server=y,suspend=n"
+# export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=1024m -Duser.language=en -Duser.country=us -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=4001,server=y,suspend=n"
 # # export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=1024m -Duser.language=en -Duser.country=us -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=4001,server=y,suspend=y"
 
 # # export MAVEN_OPTS='-Xmx1g -XX:MaxPermSize=1024 -Duser.language=en -Duser.country=us -Xnoagent -Djava.compiler=NONE'
@@ -98,20 +113,19 @@ alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
 # # List of aliases
-alias ls="ls -G"
-alias l="ls -Gla"
+alias chrome='open -a "Google Chrome" '
 alias copypath='pwd|pbcopy'
-# alias gp="git pull"
-# alias gc="git checkout"
 alias fn="find . -print | ag "
 alias ga="git add"
 alias gh="cd ~/gitHub"
 alias gw="git-wtf"
+alias l="ls -Gla"
+alias ls="ls -G"
+alias ll="ls -Gla"
 alias mc="mvn clean install"
 alias mcnt="mvn clean install -DskipTests"
 alias mt="mvn test"
 alias pd="popd" # pop the directory off of the stack
-# alias vim='/Applications/MacVim.app/Contents/MacOS/Vim'
 
 # Spacemacs
 alias sm="/usr/local/Cellar/emacs-mac/emacs-25.2-z-mac-6.3/bin/emacsclient -nc "
@@ -128,15 +142,6 @@ alias fsm="f -e emacsclient "
 # # # Pyenv
 # if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-# # # # Functions
-# # # # For git branch use # fzf
-fbr() {
-  local branches branch
-  branches=$(git branch -vv) &&
-  branch=$(echo "$branches" | fzf +m) &&
-  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
-}
-
 
 # export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
@@ -158,35 +163,6 @@ fbr() {
 # #   source '/Users/csturtevant/Downloads/google-cloud-sdk/completion.bash.inc'
 # # fi
 
-[ -f /Users/csturtevant/.lc2/bin/.lc2-init.sh ] && source /Users/csturtevant/.lc2/bin/.lc2-init.sh
+[ -f ~/.lc2/bin/.lc2-init.sh ] && source ~/.lc2/bin/.lc2-init.sh
 
 # test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
-# # # # Functions
-function vi {
-    running=$(ps aux | ag emacs | ag -v ag)
-    if [ -z "$running" ]
-    then
-        open -a "Emacs"
-        echo "not running"
-        /bin/sleep 8
-    fi
-
-    if [[ ! -t 0 ]]
-    then
-        echo "pipe"
-        TMP="$(mktemp /tmp/stdin-XXX)"
-        cat >>$TMP
-        # emacsclient -a emacs $TMP
-        emacsclient -a emacs -nc $TMP
-        rm -f $TMP
-    elif [[ -z "$1" ]]
-    then
-        echo "no pipe no args"
-        emacsclient -nc "."
-    else
-        echo "no pipe with args"
-        emacsclient -nc "$@"
-    fi
-
-}

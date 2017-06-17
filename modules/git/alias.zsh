@@ -195,6 +195,7 @@ if ! zstyle -t ':prezto:module:git:alias' skip 'yes'; then
 
   # Push (p)
   alias gp='git pull'
+  alias gpb='git push' # git push basic
   alias gpf='git push --force-with-lease'
   alias gpF='git push --force'
   alias gpa='git push --all'

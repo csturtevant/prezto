@@ -80,10 +80,7 @@ export PATH=/usr/local/bin:$PATH
 # Make sure yarn is a part of the path
 export PATH="$HOME/.yarn/bin:$PATH"
 
-# # Load .bashrc if it exists
-# # test -f ~/.bashrc && source ~/.bashrc
 # # Designate Editor
-# # export EDITOR="/Applications/Emacs.app/Contents/MacOS/Emacs"
 # export ALTERNATE_EDITOR=""
 export EDITOR=emacsclient
 

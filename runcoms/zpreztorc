@@ -30,9 +30,9 @@ zstyle ':prezto:load' pmodule \
   'history' \
   'directory' \
   'spectrum' \
-  'utility' \
   'completion' \
   'git' \
+  'utility' \
   'fasd' \
   'syntax-highlighting' \
   'history-substring-search' \

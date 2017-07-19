@@ -79,6 +79,8 @@ export PATH=~/Documents/Programs/apache-tomcat-8.0.32:$PATH
 export PATH=/usr/local/bin:$PATH
 # Make sure yarn is a part of the path
 export PATH="$HOME/.yarn/bin:$PATH"
+# Load SSH key
+ssh-add -K ~/.ssh/id_rsa
 
 # # Designate Editor
 # export ALTERNATE_EDITOR=""

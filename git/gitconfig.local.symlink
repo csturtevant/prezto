@@ -3,3 +3,5 @@
         email = sturtevant.chris@gmail.com
 [credential]
         helper = osxkeychain
+[push]
+        default = simple

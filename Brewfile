@@ -1,13 +1,15 @@
 cask_args appdir: '/Applications'
 
+tap 'beeftornado/rmtree'
+tap 'caskroom/cask'
+tap 'clangen/musikcube'
 tap 'homebrew/bundle'
 tap 'puma/puma'
 tap 'railwaycat/emacsmacport'
-tap 'beeftornado/rmtree'
-tap 'clangen/musikcube'
 
 brew 'the_silver_searcher'
 brew 'coreutils'
+brew 'docker'
 brew 'emacs-mac'
 brew 'fasd'
 brew 'fzf'

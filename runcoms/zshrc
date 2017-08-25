@@ -67,7 +67,8 @@ export ARCHFLAGS="-arch x86_64"
 
 # Java Home 
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-# export PATH="$PATH:$JAVA_HOME/bin"
+export PATH="$PATH:$JAVA_HOME/bin"
+export PATH=$PATH:/opt/maven/bin
 
 # # Ensure user-installed binaries take precedence
 export PATH=~/.bin:$PATH

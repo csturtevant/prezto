@@ -10,7 +10,7 @@ fi
 
 # Source local variables
 hostname=`hostname -s`
-if ! [ "${hostname#C02QR144FVH8}" = "${hostname}" ]; then
+if ! [ "${hostname#C02PR2K1FVH9}" = "${hostname}" ]; then
   if [[ -a $HOME/.workprofile ]]
   then
       source $HOME/.workprofile
@@ -166,3 +166,5 @@ alias fsm="f -e emacsclient "
 [ -f ~/.lc2/bin/.lc2-init.sh ] && source ~/.lc2/bin/.lc2-init.sh
 
 # test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+# export NODE_ENV=demo

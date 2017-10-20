@@ -167,4 +167,4 @@ alias fsm="f -e emacsclient "
 
 # test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
-# export NODE_ENV=demo
+export NODE_ENV=demo

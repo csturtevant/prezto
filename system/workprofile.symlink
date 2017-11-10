@@ -1,0 +1,33 @@
+# # # LC Specific
+alias cmn="cd ~/lc/lc-common/"
+alias in="cd ~/lc/investor/"
+alias ias="cd ~/lc/investor-account-service/"
+alias iass="cd ~/lc/investor-account-service/investor-account-server"
+alias iasweb="cd ~/lc/investor-account-service/investor-account-server && ./run_mysql.sh"
+alias inv="cd ~/lc/investor/"
+alias ira="cd ~/lc/investor-api/" # Investor Rest API
+alias inv2="cd ~/lc/inv2/investor/"
+alias incl="cd ~/lc/investor/investor-client"
+alias lc="cd ~/lc/"
+alias lca="cd ~/lc/main/lc-services/lc-main && mvn tomcat7:run -f pom-lcadvisors.xml"
+alias liquimase="/Users/csturtevant/lc/small-business/tools/liquibase.sh"
+alias mn="cd ~/lc/main/lc-services"
+alias mn2="cd ~/lc/main2/main/lc-services"
+alias mnweb="cd ~/lc/main/lc-services/lc-main/ && mvn tomcat7:run"
+alias mnweb2="cd ~/lc/main2/main/lc-services/lc-main/ && mvn tomcat7:run"
+alias sb="cd ~/lc/small-business/"
+alias sb2="cd ~/lc/small-business-two/small-business"
+alias sbweb='cd ~/lc/small-business/sb-webapp && mvn jetty:run -Pui -Dlc.profile=lcdev'
+alias sbweb2='cd ~/lc/small-business-two/small-business/sb-webapp && mvn jetty:run -Pui -Dlc.profile=lcdev'
+alias seleniumm="cd ~/tools/selenium-server && ./start-all.sh"
+alias wf="cd ~/lc/wildfire-investor/"
+alias wf2="cd ~/lc/wf2/wildfire-investor/"
+alias wf3="cd ~/lc/wf3/wildfire-investor/"
+      # will start on  http://localhost:4444/grid/console
+alias te="cd ~/lc/trading-engine"
+alias sbv="mvn spring-boot:run -Dtc.log.dir=logs -Dlc.profile=lcdev"
+
+# # # Oracle Config for Conda
+export ORACLE_HOME=/Users/csturtevant/Downloads/oracle/instantclient_12_1-2
+export DYLD_LIBRARY_PATH=$ORACLE_HOME
+export LD_LIBRARY_PATH=$ORACLE_HOME

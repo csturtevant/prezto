@@ -283,6 +283,10 @@ you should place your code here."
   ;; (with-eval-after-load 'linum
   ;;   (linum-relative-toggle))
 
+  (setq org-todo-keyword-faces
+        '(("TODO" . org-warning) ("STARTED" . "yellow")
+          ("CANCELED" . (:foreground "blue" :weight bold))))
+
 
   ;Configuration for org mode
   (setq org-todo-keywords

@@ -70,6 +70,15 @@ export ARCHFLAGS="-arch x86_64"
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 export PATH="$PATH:$JAVA_HOME/bin"
 export PATH=$PATH:/opt/maven/bin
+# Golang Home
+export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+# Anaconda
+export PATH="/Users/chrissturtevant0/anaconda3/bin:$PATH"
+# Tensorflow
+export TF_BINARY_URL=https://storage.googleapis.com/tensorflow/mac/gpu/tensorflow_gpu-1.1.0-py3-none-any.whl
+
 
 # # Ensure user-installed binaries take precedence
 export PATH=~/.bin:$PATH

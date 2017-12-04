@@ -31,7 +31,6 @@ brew 'wget'
 brew 'yarn'
 
 cask 'alfred'
-cask 'anaconda'
 cask 'bartender'
 cask 'dash'
 cask 'easyfind'

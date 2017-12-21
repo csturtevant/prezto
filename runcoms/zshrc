@@ -91,7 +91,7 @@ export PATH=~/Documents/Programs/apache-tomcat-8.0.32:$PATH
 # Make sure /usr/local/bin is a part of the path
 export PATH=/usr/local/bin:$PATH
 # Make sure yarn is a part of the path
-export PATH="$HOME/.yarn/bin:$PATH"
+# export PATH="$HOME/.yarn/bin:$PATH"
 
 # # Designate Editor
 # export ALTERNATE_EDITOR=""

@@ -32,6 +32,7 @@ def sync(to_sync):
     else:
         sync_repo(home_directory_path, "notes")
         sync_repo(home_directory_path, ".zprezto")
+        sync_repo(home_directory_path, ".ssh")
 
 to_sync = input("Sync notes, toolbox or both? ")
 sync(to_sync)

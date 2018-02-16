@@ -53,6 +53,9 @@ do
   source $file
 done
 
+# load the rust env
+source $HOME/.cargo/env
+
 # # # I have commented out the below item as it seems unnecessary 
 # # # as these files are already accessible via path
 # # load everything but the path and completion files

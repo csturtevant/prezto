@@ -146,6 +146,9 @@ alias smg="open -a /usr/local/Cellar/emacs-mac/emacs-25.2-z-mac-6.3/Emacs.app "
 alias smdmn="emacs --daemon"
 alias killsmdmn="emacsclient -e '(client-save-kill-emacs)'"
 
+# Tree
+alias tree="tree -C -I $(git check-ignore * 2>/dev/null | tr "\n" "|").git"
+
 # Fasd
 alias fsm="f -e emacsclient "
 

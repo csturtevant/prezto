@@ -133,7 +133,7 @@ alias ga="git add"
 alias gh="cd ~/gitHub"
 alias gw="git-wtf"
 alias l="ls -Gla"
-alias ls="ls -G"
+# alias ls="ls -G"
 alias ll="ls -Gla"
 alias mc="mvn clean install"
 alias mcnt="mvn clean install -DskipTests"
@@ -185,5 +185,9 @@ export NVM_DIR="$HOME/.nvm"
 
 # test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
-export NODE_ENV=demo
+# export NODE_ENV=demo
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# core utils
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"

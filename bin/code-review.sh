@@ -1,6 +1,8 @@
 #!/bin/bash
 
-# todo: add usage
+# Example
+# review-start.sh feature/LMS-97793
+# To finish execute the script review-finished.sh
 
 CANDIDATE="${1}"
 
@@ -15,11 +17,12 @@ echo "MERGE_TARGET=${MERGE_TARGET}"
 echo "REVIEW=${REVIEW}"
 
 
+git checkout ${MERGE_TARGET}
+git pull
+
 git checkout ${CANDIDATE}
 git pull
 
-git checkout ${MERGE_TARGET}
-git pull
 git checkout -b ${REVIEW}
 
 git merge --squash ${CANDIDATE}

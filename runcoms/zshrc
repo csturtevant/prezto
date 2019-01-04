@@ -162,7 +162,8 @@ alias fsm="f -e emacsclient "
 # I am currently using NVM to manage my node versions
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-# nvm use 0.12.7
+
+nvm use 10.13.0
 # nvm use 0.12.7
 # # # # # Run naven wuth the given options
 # # mvnd () {
@@ -185,9 +186,19 @@ export NVM_DIR="$HOME/.nvm"
 
 # test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
-# export NODE_ENV=demo
+export NODE_ENV=demo
 [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # core utils
+# Uncomment the two lines below if you see: "ls: illegal option -- -"
 PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
+# 30/11/18
+fpath=(/usr/local/share/zsh-completions $fpath)
+
+# Gradle 21/12/18
+# export PATH=$PATH:/usr/local/Cellar/gradle/5.0/bin
+
+export GRADLE_HOME=/usr/local/opt/gradle/libexec
+export PATH=$GRADLE_HOME/bin:$PATH

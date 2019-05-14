@@ -104,7 +104,7 @@ export EDITOR=emacsclient
 # export PATH="$PATH:$JAVA_HOME/bin"
 
 # # # Default Maven Opts
- export MAVEN_OPTS="-Xmx1g -Xms1g -XX:MaxPermSize=1g"
+ export MAVEN_OPTS="-Xmx2g -Xms2g -XX:MaxPermSize=2g"
 
 # # Maven Opts for large repository
 # export MAVEN_OPTS="-Xmx1g -XX:MaxPermSize=1024m -Duser.language=en -Duser.country=us -Xdebug -Xnoagent -Djava.compiler=NONE -Xrunjdwp:transport=dt_socket,address=4001,server=y,suspend=n"
@@ -121,19 +121,19 @@ export EDITOR=emacsclient
 # # fpath=(~/.zsh $fpath)
 
 # # List of global aliases
-alias -g pa=" | ag " # pipe to ag (pa)
+alias -g pa=" | rg " # pipe to rg (pa)
+alias -g pg=" | rg " # pipe to rg (pa)
 alias -g ...='../..'
 alias -g ....='../../..'
 alias -g .....='../../../..'
 # # List of aliases
 alias chrome='open -a "Google Chrome" '
 alias copypath='pwd|pbcopy'
-alias fn="find . -print | ag "
+alias fn="find . -print | rg "
 alias ga="git add"
 alias gh="cd ~/gitHub"
 alias gw="git-wtf"
 alias l="ls -Gla"
-# alias ls="ls -G"
 alias ll="ls -Gla"
 alias mc="mvn clean install"
 alias mcnt="mvn clean install -DskipTests"
@@ -147,7 +147,8 @@ alias smdmn="emacs --daemon"
 alias killsmdmn="emacsclient -e '(client-save-kill-emacs)'"
 
 # Tree
-alias tree="tree -C -I $(git check-ignore * 2>/dev/null | tr "\n" "|").git"
+# alias tree="tree -C -I $(git check-ignore * 2>/dev/null | tr "\n" "|").git"
+alias tree="tree -C -I"
 
 # Fasd
 alias fsm="f -e emacsclient "
@@ -202,3 +203,7 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 export GRADLE_HOME=/usr/local/opt/gradle/libexec
 export PATH=$GRADLE_HOME/bin:$PATH
+# Add csvq to path
+export PATH=$PATH:/Users/csturtevant/Downloads/csvq-v1.9.7-darwin-amd64/
+
+alias ls="exa"

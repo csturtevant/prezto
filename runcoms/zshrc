@@ -10,7 +10,7 @@ fi
 
 # Source local variables
 hostname=`hostname -s`
-if ! [ "${hostname#C02QR144FVH8}" = "${hostname}" ]; then
+if ! [ "${hostname#C02TH03UHF1T}" = "${hostname}" ]; then
   if [[ -a $HOME/.workprofile ]]
   then
       source $HOME/.workprofile
@@ -148,7 +148,7 @@ alias killsmdmn="emacsclient -e '(client-save-kill-emacs)'"
 
 # Tree
 # alias tree="tree -C -I $(git check-ignore * 2>/dev/null | tr "\n" "|").git"
-alias tree="tree -C -I"
+# alias tree="tree -C -I"
 
 # Fasd
 alias fsm="f -e emacsclient "
@@ -206,4 +206,4 @@ export PATH=$GRADLE_HOME/bin:$PATH
 # Add csvq to path
 export PATH=$PATH:/Users/csturtevant/Downloads/csvq-v1.9.7-darwin-amd64/
 
-alias ls="exa"
+# alias ls="exa"

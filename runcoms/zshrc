@@ -212,8 +212,3 @@ export PATH=$PATH:/Users/csturtevant/Downloads/csvq-v1.9.7-darwin-amd64/
 
 alias ls="exa"
 alias ag="rg"
-
-function mkdir
-{
-  command mkdir $1 && cd $1
-}

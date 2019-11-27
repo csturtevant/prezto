@@ -203,10 +203,6 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 export GRADLE_HOME=/usr/local/opt/gradle/libexec
 export PATH=$GRADLE_HOME/bin:$PATH
 
-alias ls="exa"
-alias ag="rg"
-
-
 # I am currently using NVM to manage my node versions
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm

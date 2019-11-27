@@ -16,6 +16,11 @@
         editor = vim
 [credential]
 	helper = osxkeychain
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 [help]
         autocorrect = 1
 [hub]
@@ -31,10 +36,5 @@
         keepBackup = false
 [push]
         default = simple
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
 [user]
 	name = Chris Sturtevant

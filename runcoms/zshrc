@@ -136,6 +136,9 @@ alias gh="cd ~/gitHub"
 alias gw="git-wtf"
 alias l="ls"
 alias la="ls -a"
+alias ls="exa"
+alias l="ls -Gla"
+# alias ls="ls -G"
 alias ll="ls -Gla"
 alias mc="mvn clean install"
 alias mcnt="mvn clean install -DskipTests"
@@ -199,8 +202,6 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 export GRADLE_HOME=/usr/local/opt/gradle/libexec
 export PATH=$GRADLE_HOME/bin:$PATH
-# Add csvq to path
-export PATH=$PATH:/Users/csturtevant/Downloads/csvq-v1.9.7-darwin-amd64/
 
 alias ls="exa"
 alias ag="rg"

@@ -215,4 +215,3 @@ export NVM_DIR="$HOME/.nvm"
 
 nvm use 12.16.1
 # nvm use 10.13.0
-# nvm use 0.12.7

@@ -202,6 +202,13 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 
 export GRADLE_HOME=/usr/local/opt/gradle/libexec
 export PATH=$GRADLE_HOME/bin:$PATH
+# Add csvq to path
+export PATH=$PATH:/Users/csturtevant/Downloads/csvq-v1.9.7-darwin-amd64/
+
+alias ls="exa"
+alias ag="rg"
+
+
 # I am currently using NVM to manage my node versions
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
